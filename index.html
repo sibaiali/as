@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bodyweight Hypertrophy — 8–12 Week Program</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:       #0E0E0E;
+    --dark:        #161616;
+    --card:        #1E1E1E;
+    --card-border: #2C2C2C;
+    --amber:       #E8A526;
+    --amber-dim:   #C4891E;
+    --amber-glow:  rgba(232,165,38,0.12);
+    --cream:       #F0EBE0;
+    --cream-dim:   #B8AFA0;
+    --green:       #4CAF7D;
+    --green-dim:   rgba(76,175,125,0.12);
+    --red:         #E05555;
+    --red-dim:     rgba(224,85,85,0.1);
+    --yellow-dim:  rgba(232,165,38,0.1);
+    --text:        #E8E0D4;
+    --text-mid:    #9A9080;
+    --text-dim:    #5A524A;
+    --white:       #FAFAF8;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Grain texture overlay */
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events:none;
+    z-index:0;
+    opacity:0.6;
+  }
+
+  /* Ambient glows */
+  body::after {
+    content:'';
+    position:fixed;
+    top:-20%; left:-10%;
+    width:60%; height:60%;
+    background: radial-gradient(ellipse, rgba(232,165,38,0.06) 0%, transparent 70%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top:0; z-index:100;
+    background: rgba(14,14,14,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .nav-inner {
+    max-width: 1020px; margin:0 auto;
+    padding: 0 32px;
+    display:flex; align-items:center; justify-content:space-between;
+    height: 58px;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.35rem;
+    letter-spacing: 0.08em;
+    color: var(--amber);
+  }
+
+  .nav-links { display:flex; gap:28px; list-style:none; }
+  .nav-links a {
+    font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.14em;
+    color: var(--text-mid); text-decoration:none; font-weight:500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--amber); }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width:1020px; margin:0 auto;
+    padding: 0 32px 100px;
+    position:relative; z-index:1;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 0 64px;
+    position:relative;
+  }
+
+  .hero-tag {
+    display:inline-flex; align-items:center; gap:8px;
+    background: var(--amber-glow);
+    border: 1px solid rgba(232,165,38,0.25);
+    border-radius:4px;
+    padding: 5px 14px;
+    font-size:0.7rem; text-transform:uppercase; letter-spacing:0.18em;
+    color: var(--amber); font-weight:600;
+    margin-bottom: 24px;
+    animation: fadeIn 0.7s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.6rem, 8vw, 7rem);
+    letter-spacing: 0.04em;
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 20px;
+    animation: slideUp 0.8s ease 0.1s both;
+  }
+
+  .hero h1 span { color: var(--amber); }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    max-width: 560px;
+    line-height: 1.7;
+    animation: slideUp 0.9s ease 0.2s both;
+  }
+
+  .hero-stats {
+    display:flex; gap:0; margin-top:48px;
+    border: 1px solid var(--card-border);
+    border-radius:14px; overflow:hidden;
+    animation: slideUp 1s ease 0.3s both;
+  }
+
+  .hero-stat {
+    flex:1; padding:22px 28px;
+    border-right:1px solid var(--card-border);
+  }
+  .hero-stat:last-child { border-right:none; }
+
+  .stat-value {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:2.4rem; letter-spacing:0.04em;
+    color:var(--amber); display:block; line-height:1;
+  }
+  .stat-label {
+    font-size:0.7rem; text-transform:uppercase; letter-spacing:0.14em;
+    color:var(--text-mid); margin-top:4px; display:block;
+  }
+
+  /* ── SECTION ── */
+  .section-block { margin-bottom:64px; }
+
+  .section-eyebrow {
+    font-size:0.68rem; text-transform:uppercase; letter-spacing:0.22em;
+    color:var(--amber); font-weight:600; margin-bottom:8px;
+  }
+
+  .section-title {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:2.4rem; letter-spacing:0.05em;
+    color:var(--white); margin-bottom:28px;
+    line-height:1;
+  }
+
+  hr.section-line {
+    border:none; border-top:1px solid var(--card-border);
+    margin: 56px 0;
+  }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-radius:14px; padding:22px 26px; margin-bottom:16px;
+    display:flex; align-items:flex-start; gap:16px;
+  }
+
+  .callout.green  { background:var(--green-dim); border:1px solid rgba(76,175,125,0.2); }
+  .callout.amber  { background:var(--yellow-dim); border:1px solid rgba(232,165,38,0.2); }
+  .callout.red    { background:var(--red-dim);   border:1px solid rgba(224,85,85,0.2); }
+
+  .callout-icon { font-size:1.2rem; flex-shrink:0; margin-top:2px; }
+  .callout-body { flex:1; }
+  .callout-title {
+    font-size:0.82rem; font-weight:600; text-transform:uppercase;
+    letter-spacing:0.1em; margin-bottom:5px;
+  }
+  .callout.green  .callout-title { color:var(--green); }
+  .callout.amber  .callout-title { color:var(--amber); }
+  .callout.red    .callout-title { color:var(--red); }
+  .callout-text { font-size:0.86rem; color:var(--text-mid); line-height:1.6; }
+
+  /* ── PROGRAM COMPARISON ── */
+  .compare-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+
+  .compare-card {
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:16px; padding:24px 20px;
+    position:relative; transition:all 0.3s ease;
+  }
+  .compare-card:hover { border-color:#3A3A3A; transform:translateY(-3px); }
+  .compare-card.winner {
+    border-color: var(--amber);
+    background: linear-gradient(160deg,#1E1E1E 0%,rgba(232,165,38,0.05) 100%);
+  }
+
+  .winner-badge {
+    position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+    background:var(--amber); color:var(--black);
+    font-size:0.6rem; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.12em; padding:3px 12px; border-radius:20px;
+    white-space:nowrap;
+  }
+
+  .compare-letter {
+    font-family:'Bebas Neue',sans-serif; font-size:2.2rem;
+    color:var(--text-dim); letter-spacing:0.05em; margin-bottom:8px;
+    line-height:1;
+  }
+  .compare-card.winner .compare-letter { color:var(--amber); }
+
+  .compare-name {
+    font-size:0.9rem; font-weight:600; color:var(--white);
+    margin-bottom:6px;
+  }
+
+  .compare-freq {
+    font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--text-mid); margin-bottom:14px;
+  }
+
+  .compare-pros, .compare-cons {
+    font-size:0.79rem; line-height:1.55; margin-bottom:8px;
+  }
+
+  .pro-label  { color:var(--green); font-weight:600; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em; }
+  .con-label  { color:var(--red);   font-weight:600; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em; }
+  .compare-pros p { color:var(--text-mid); margin-top:3px; }
+  .compare-cons p { color:var(--text-dim); margin-top:3px; }
+
+  /* ── MACROS ── */
+  .macros-row { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:32px; }
+
+  .macro-card {
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:14px; padding:20px 18px;
+    transition:all 0.2s ease;
+  }
+  .macro-card:hover { border-color:#3C3C3C; }
+
+  .macro-icon { font-size:1.5rem; margin-bottom:10px; display:block; }
+  .macro-val {
+    font-family:'Bebas Neue',sans-serif; font-size:1.9rem;
+    color:var(--amber); display:block; line-height:1; margin-bottom:3px;
+    letter-spacing:0.03em;
+  }
+  .macro-lbl {
+    font-size:0.68rem; text-transform:uppercase; letter-spacing:0.12em;
+    color:var(--text-mid); font-weight:500;
+  }
+
+  /* ── MEAL TABLE ── */
+  .meal-table { width:100%; border-collapse:collapse; margin-top:16px; }
+  .meal-table th {
+    font-size:0.68rem; text-transform:uppercase; letter-spacing:0.14em;
+    color:var(--text-mid); font-weight:600; text-align:left;
+    padding:10px 16px; border-bottom:1px solid var(--card-border);
+  }
+  .meal-table td {
+    font-size:0.84rem; color:var(--text);
+    padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.04);
+    vertical-align:top; line-height:1.5;
+  }
+  .meal-table tr:last-child td { border-bottom:none; }
+  .meal-table tr:hover td { background:rgba(255,255,255,0.02); }
+  .meal-table .num { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; color:var(--amber); letter-spacing:0.04em; }
+
+  /* ── WEEKLY PLAN ── */
+  .week-grid { display:grid; gap:10px; }
+
+  .day-row {
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:14px; overflow:hidden;
+    display:grid; grid-template-columns:130px 1fr 1fr;
+    transition:all 0.3s ease;
+  }
+  .day-row:hover { border-color:#3A3A3A; transform:translateX(5px); }
+  .day-row.rest-day { grid-template-columns:130px 1fr; }
+
+  .day-label {
+    padding:20px 18px; display:flex; flex-direction:column; justify-content:center;
+    border-right:1px solid var(--card-border);
+  }
+  .day-row:nth-child(1) .day-label,
+  .day-row:nth-child(3) .day-label,
+  .day-row:nth-child(5) .day-label {
+    background: linear-gradient(135deg,rgba(232,165,38,0.1),rgba(232,165,38,0.04));
+  }
+  .day-row:nth-child(2) .day-label,
+  .day-row:nth-child(4) .day-label {
+    background: linear-gradient(135deg,rgba(76,175,125,0.08),rgba(76,175,125,0.02));
+  }
+  .day-row:nth-child(6) .day-label,
+  .day-row:nth-child(7) .day-label {
+    background: linear-gradient(135deg,rgba(255,255,255,0.03),transparent);
+  }
+
+  .day-name {
+    font-family:'Bebas Neue',sans-serif; font-size:1.5rem;
+    letter-spacing:0.06em; color:var(--white); line-height:1;
+  }
+  .day-focus {
+    font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--text-mid); margin-top:4px; line-height:1.4;
+  }
+
+  .day-badge {
+    display:inline-block; padding:2px 9px; border-radius:4px;
+    font-size:0.6rem; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.08em; margin-top:8px;
+  }
+  .badge-heavy  { background:rgba(232,165,38,0.15); color:var(--amber); }
+  .badge-active { background:rgba(76,175,125,0.12); color:var(--green); }
+  .badge-rest   { background:rgba(255,255,255,0.06); color:var(--text-mid); }
+
+  .day-section { padding:18px 20px; border-right:1px solid var(--card-border); }
+  .day-section:last-child { border-right:none; }
+  .day-section-label {
+    font-size:0.62rem; text-transform:uppercase; letter-spacing:0.16em;
+    color:var(--text-dim); font-weight:600; margin-bottom:10px;
+  }
+  .day-section ul { list-style:none; display:flex; flex-direction:column; gap:5px; }
+  .day-section li {
+    font-size:0.82rem; color:var(--text-mid);
+    display:flex; align-items:flex-start; gap:8px; line-height:1.45;
+  }
+  .day-section li::before {
+    content:'—'; color:var(--text-dim); font-size:0.7rem; flex-shrink:0; margin-top:3px;
+  }
+
+  .ex-chip {
+    display:inline-block; background:rgba(232,165,38,0.1);
+    border:1px solid rgba(232,165,38,0.2); border-radius:5px;
+    padding:3px 10px; font-size:0.75rem; color:var(--amber);
+    margin:2px 3px 2px 0; font-weight:500;
+  }
+
+  /* ── EXERCISE CARDS ── */
+  .exercises-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:18px; }
+
+  .ex-card {
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:18px; overflow:hidden;
+    transition:all 0.3s ease; display:flex; flex-direction:column;
+  }
+  .ex-card:hover { border-color:#404040; transform:translateY(-4px); box-shadow:0 16px 48px rgba(0,0,0,0.4); }
+
+  /* YouTube wrapper */
+  .yt-wrap {
+    width:100%; aspect-ratio:16/9;
+    background:#111; position:relative; flex-shrink:0;
+    overflow:hidden;
+  }
+  .yt-wrap iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
+  .yt-badge {
+    position:absolute; top:10px; right:10px; z-index:2;
+    background:rgba(232,165,38,0.2); backdrop-filter:blur(6px);
+    border:1px solid rgba(232,165,38,0.3); border-radius:5px;
+    padding:3px 9px; font-size:0.62rem; color:var(--amber);
+    text-transform:uppercase; letter-spacing:0.1em; font-weight:600;
+  }
+
+  /* Visual placeholder for exercises without video */
+  .ex-visual {
+    width:100%; aspect-ratio:16/9;
+    background: linear-gradient(135deg,#1A1A1A,#242424);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:10px; flex-shrink:0; position:relative; overflow:hidden;
+  }
+  .ex-visual::before {
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse at center, var(--amber-glow) 0%, transparent 70%);
+  }
+  .ex-visual-icon { font-size:2.8rem; position:relative; z-index:1; }
+  .ex-visual-label {
+    font-size:0.65rem; text-transform:uppercase; letter-spacing:0.16em;
+    color:var(--text-mid); font-weight:600; position:relative; z-index:1;
+  }
+
+  .ex-body { padding:20px 22px; flex:1; display:flex; flex-direction:column; }
+  .ex-day-tag {
+    font-size:0.63rem; text-transform:uppercase; letter-spacing:0.14em;
+    color:var(--amber); font-weight:600; margin-bottom:7px;
+  }
+  .ex-name {
+    font-family:'Bebas Neue',sans-serif; font-size:1.35rem;
+    letter-spacing:0.04em; color:var(--white); margin-bottom:10px; line-height:1.1;
+  }
+  .ex-sets {
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(232,165,38,0.1); border:1px solid rgba(232,165,38,0.2);
+    border-radius:5px; padding:4px 12px; font-size:0.76rem;
+    color:var(--amber); font-weight:600; margin-bottom:14px;
+  }
+  .ex-cues {
+    font-size:0.81rem; color:var(--text-mid); line-height:1.65;
+    padding-top:12px; border-top:1px solid var(--card-border);
+    flex:1;
+  }
+  .ex-cues strong { color:var(--cream-dim); font-weight:500; }
+
+  /* ── PROGRESSION TIMELINE ── */
+  .timeline { display:grid; grid-template-columns:repeat(3,1fr); gap:0; position:relative; }
+
+  .timeline::before {
+    content:'';
+    position:absolute; top:28px; left:calc(16.66% + 14px); right:calc(16.66% + 14px);
+    height:2px; background: linear-gradient(90deg,var(--amber-dim),var(--amber));
+    z-index:0;
+  }
+
+  .phase-card { padding:0 10px; }
+
+  .phase-dot {
+    width:28px; height:28px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.75rem; font-weight:700; margin-bottom:16px;
+    position:relative; z-index:1;
+  }
+  .phase-card:nth-child(1) .phase-dot { background:var(--card-border); color:var(--text-mid); border:2px solid #3A3A3A; }
+  .phase-card:nth-child(2) .phase-dot { background:var(--amber-dim); color:var(--black); }
+  .phase-card:nth-child(3) .phase-dot { background:var(--amber); color:var(--black); }
+
+  .phase-weeks {
+    font-size:0.65rem; text-transform:uppercase; letter-spacing:0.15em;
+    color:var(--text-dim); font-weight:600; margin-bottom:8px;
+  }
+  .phase-name {
+    font-family:'Bebas Neue',sans-serif; font-size:1.5rem;
+    letter-spacing:0.05em; color:var(--white); margin-bottom:8px;
+  }
+  .phase-desc { font-size:0.8rem; color:var(--text-mid); line-height:1.6; }
+
+  .phase-targets {
+    margin-top:12px; display:flex; flex-direction:column; gap:5px;
+  }
+  .phase-target {
+    font-size:0.75rem; color:var(--text-mid); display:flex; gap:7px;
+  }
+  .phase-target::before { content:'▸'; color:var(--amber); font-size:0.65rem; margin-top:3px; flex-shrink:0; }
+
+  /* ── WORKOUT TABLE ── */
+  .workout-table { width:100%; border-collapse:collapse; }
+  .workout-table th {
+    font-size:0.65rem; text-transform:uppercase; letter-spacing:0.15em;
+    color:var(--text-dim); font-weight:600; text-align:left;
+    padding:10px 16px; border-bottom:1px solid var(--card-border);
+  }
+  .workout-table td {
+    font-size:0.83rem; color:var(--text); padding:12px 16px;
+    border-bottom:1px solid rgba(255,255,255,0.04); vertical-align:top;
+  }
+  .workout-table tr:last-child td { border-bottom:none; }
+  .workout-table tr:hover td { background:rgba(255,255,255,0.02); }
+  .workout-table .amber { color:var(--amber); font-weight:600; }
+  .rpe-bar {
+    display:inline-flex; gap:3px; align-items:center;
+  }
+  .rpe-dot {
+    width:6px; height:6px; border-radius:50%;
+  }
+  .rpe-dot.filled { background:var(--amber); }
+  .rpe-dot.empty  { background:var(--card-border); }
+
+  /* ── SOURCES ── */
+  .sources-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+
+  .source-link {
+    background:var(--card); border:1px solid var(--card-border);
+    border-radius:10px; padding:14px 18px;
+    text-decoration:none; display:flex; align-items:flex-start; gap:12px;
+    transition:all 0.2s ease;
+  }
+  .source-link:hover { border-color:#404040; background:#222; }
+  .source-num {
+    font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:0.05em;
+    color:var(--amber); flex-shrink:0; line-height:1; margin-top:2px;
+  }
+  .source-title { font-size:0.8rem; color:var(--text); font-weight:500; line-height:1.4; }
+  .source-url { font-size:0.7rem; color:var(--text-dim); margin-top:3px; word-break:break-all; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: linear-gradient(135deg,var(--dark),#1A1410);
+    border:1px solid var(--card-border); border-radius:22px;
+    padding:60px 48px; text-align:center; margin-top:24px;
+    position:relative; overflow:hidden;
+  }
+  .footer::before {
+    content:'PEAK';
+    font-family:'Bebas Neue',sans-serif; font-size:18rem; letter-spacing:0.1em;
+    color:rgba(255,255,255,0.015); position:absolute;
+    bottom:-40px; left:50%; transform:translateX(-50%);
+    pointer-events:none; line-height:1; white-space:nowrap;
+  }
+  .footer h2 {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(2.4rem,5vw,4rem); letter-spacing:0.06em;
+    color:var(--white); margin-bottom:14px; position:relative;
+  }
+  .footer h2 span { color:var(--amber); }
+  .footer p { font-size:0.9rem; color:var(--text-mid); max-width:480px; margin:0 auto; line-height:1.75; position:relative; }
+
+  .footer-stats { display:flex; justify-content:center; gap:40px; margin-top:40px; flex-wrap:wrap; position:relative; }
+  .f-stat { text-align:center; }
+  .f-num {
+    font-family:'Bebas Neue',sans-serif; font-size:2.8rem; letter-spacing:0.04em;
+    color:var(--amber); display:block; line-height:1;
+  }
+  .f-lbl { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.14em; color:var(--text-dim); margin-top:4px; display:block; }
+  .f-div { width:1px; background:var(--card-border); align-self:stretch; margin:4px 0; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeIn  { from{opacity:0} to{opacity:1} }
+  @keyframes slideUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:760px){
+    .compare-grid,.macros-row,.exercises-grid { grid-template-columns:1fr; }
+    .timeline { grid-template-columns:1fr; }
+    .timeline::before { display:none; }
+    .day-row,.day-row.rest-day { grid-template-columns:1fr; }
+    .day-section { border-right:none; border-top:1px solid var(--card-border); }
+    nav .nav-links { display:none; }
+    .hero h1 { font-size:3.2rem; }
+    .hero-stats { flex-direction:column; }
+    .hero-stat { border-right:none; border-bottom:1px solid var(--card-border); }
+    .hero-stat:last-child { border-bottom:none; }
+    .sources-grid { grid-template-columns:1fr; }
+    .footer { padding:40px 24px; }
+    .container { padding:0 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">Hypertrophy Dashboard</span>
+    <ul class="nav-links">
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#nutrition">Nutrition</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#exercises">Exercises</a></li>
+      <li><a href="#progression">Progression</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="hero-tag">⚡ Science-Backed · No Equipment Required</div>
+    <h1>Bodyweight<br><span>Hypertrophy</span><br>Program</h1>
+    <p class="hero-desc">Build a thicker chest, broader shoulders, and visible abs in 8–12 weeks using high-tension bodyweight progressions — zero gym required.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="stat-value">8–12</span>
+        <span class="stat-label">Weeks</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-value">3×</span>
+        <span class="stat-label">Upper body days / week</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-value">2.6k</span>
+        <span class="stat-label">Calories / day</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-value">160g</span>
+        <span class="stat-label">Protein / day</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PROGRAM COMPARISON ── -->
+  <div class="section-block" id="programs">
+    <p class="section-eyebrow">01 — Program Selection</p>
+    <div class="section-title">Candidate Programs Compared</div>
+
+    <div class="compare-grid">
+
+      <div class="compare-card winner">
+        <div class="winner-badge">✓ Best Choice</div>
+        <div class="compare-letter">A</div>
+        <div class="compare-name">Push-Up Triad Split</div>
+        <div class="compare-freq">3× / week · Mon / Wed / Fri</div>
+        <div class="compare-pros">
+          <div class="pro-label">Pros</div>
+          <p>Chest/shoulder-specific; easy to scale via books/benches; high TUT; zero equipment. Maximal mechanical tension for hypertrophy.</p>
+        </div>
+        <div class="compare-cons">
+          <div class="con-label">Cons</div>
+          <p>Legs not included (use football / off-days).</p>
+        </div>
+      </div>
+
+      <div class="compare-card">
+        <div class="compare-letter">B</div>
+        <div class="compare-name">Full-Body BWF Split</div>
+        <div class="compare-freq">4× / week · PPLP</div>
+        <div class="compare-pros">
+          <div class="pro-label">Pros</div>
+          <p>Balanced full-body approach; builds overall muscle; moderate frequency.</p>
+        </div>
+        <div class="compare-cons">
+          <div class="con-label">Cons</div>
+          <p>Less chest specialization; requires pull-ups (not the priority here).</p>
+        </div>
+      </div>
+
+      <div class="compare-card">
+        <div class="compare-letter">C</div>
+        <div class="compare-name">Convict-Style Hypertrophy</div>
+        <div class="compare-freq">3–4× / week · Push/Pull/Legs</div>
+        <div class="compare-pros">
+          <div class="pro-label">Pros</div>
+          <p>High volume; builds base strength; joint-friendly progressions.</p>
+        </div>
+        <div class="compare-cons">
+          <div class="con-label">Cons</div>
+          <p>Lacks strict 8–15 rep + TUT emphasis; slower visible hypertrophy results.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:20px; display:flex; flex-direction:column; gap:12px;">
+      <div class="callout green">
+        <div class="callout-icon">✅</div>
+        <div class="callout-body">
+          <div class="callout-title">Program A Selected — Push-Up Triad Split</div>
+          <div class="callout-text">Most directly targets chest/shoulders with maximal mechanical tension. Adapted with progressive overload and dedicated core work for visible abs. Science confirms bodyweight push-ups ≈ bench press for chest hypertrophy when load and effort are equated (Kikuchi 2017).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-line">
+
+  <!-- ── NUTRITION ── -->
+  <div class="section-block" id="nutrition">
+    <p class="section-eyebrow">02 — Nutrition & Recovery</p>
+    <div class="section-title">Fuel the Machine</div>
+
+    <div class="macros-row">
+      <div class="macro-card">
+        <span class="macro-icon">🔥</span>
+        <span class="macro-val">2,500–2,700</span>
+        <span class="macro-lbl">kcal / day</span>
+      </div>
+      <div class="macro-card">
+        <span class="macro-icon">🥩</span>
+        <span class="macro-val">150–170g</span>
+        <span class="macro-lbl">Protein / day</span>
+      </div>
+      <div class="macro-card">
+        <span class="macro-icon">🌾</span>
+        <span class="macro-val">2–3g/kg</span>
+        <span class="macro-lbl">Carbs (timed)</span>
+      </div>
+      <div class="macro-card">
+        <span class="macro-icon">💧</span>
+        <span class="macro-val">3–4L</span>
+        <span class="macro-lbl">Water / day</span>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:28px;">
+      <div class="callout green">
+        <div class="callout-icon">🟢</div>
+        <div class="callout-body">
+          <div class="callout-title">On Track</div>
+          <div class="callout-text">Hit 150–170g protein daily. Prioritize: chicken, fish, lean beef, eggs, Greek yogurt, cottage cheese, whey. Carbs around workouts — rice, potatoes, fruit. Healthy fats (olive oil, avocado, nuts) for hormones.</div>
+        </div>
+      </div>
+      <div class="callout amber">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-body">
+          <div class="callout-title">Caution — If Abs Aren't Showing by Mid-Cycle</div>
+          <div class="callout-text">Drop calories by 200 kcal/day. Monitor weight weekly. Target ~0.5–1% bodyweight loss per week (0.5–0.85kg). You can't spot-reduce fat — diet is what reveals the abs you've built.</div>
+        </div>
+      </div>
+      <div class="callout red">
+        <div class="callout-icon">🔴</div>
+        <div class="callout-body">
+          <div class="callout-title">Reminder — Sleep & Deload</div>
+          <div class="callout-text">7–9 hours/night. Muscle is built during recovery, not training. If joints feel beat up by week 8–10, take a deload week (50% volume) before pushing to peak. Never skip rest days before heavy sessions.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meal Table -->
+    <p style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-dim);margin-bottom:12px;font-weight:600;">Sample Daily Meal Template — ~2,600 kcal</p>
+    <div style="background:var(--card);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;">
+      <table class="meal-table">
+        <thead>
+          <tr>
+            <th>Meal</th>
+            <th>Example Foods</th>
+            <th>Protein</th>
+            <th>Carbs</th>
+            <th>Fat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Breakfast</strong></td>
+            <td>4 whole eggs + spinach · 1 cup oatmeal + berries</td>
+            <td><span class="num">40g</span></td>
+            <td><span class="num">50g</span></td>
+            <td><span class="num">15g</span></td>
+          </tr>
+          <tr>
+            <td><strong>Lunch</strong></td>
+            <td>200g chicken breast · 1 cup brown rice · mixed salad + olive oil</td>
+            <td><span class="num">50g</span></td>
+            <td><span class="num">45g</span></td>
+            <td><span class="num">20g</span></td>
+          </tr>
+          <tr>
+            <td><strong>Pre-Workout</strong></td>
+            <td>Greek yogurt or cottage cheese · banana · whey shake (opt.)</td>
+            <td><span class="num">30g</span></td>
+            <td><span class="num">40g</span></td>
+            <td><span class="num">5g</span></td>
+          </tr>
+          <tr>
+            <td><strong>Dinner</strong></td>
+            <td>200g salmon or white fish · sweet potato · steamed broccoli</td>
+            <td><span class="num">50g</span></td>
+            <td><span class="num">40g</span></td>
+            <td><span class="num">10g</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="section-line">
+
+  <!-- ── WEEKLY SCHEDULE ── -->
+  <div class="section-block" id="schedule">
+    <p class="section-eyebrow">03 — Weekly Split</p>
+    <div class="section-title">Your Training Week</div>
+
+    <div class="week-grid">
+
+      <div class="day-row">
+        <div class="day-label">
+          <div class="day-name">MON</div>
+          <div class="day-focus">Chest / Shoulders & Heavy Core</div>
+          <span class="day-badge badge-heavy">Heavy Day</span>
+        </div>
+        <div class="day-section">
+          <div class="day-section-label">🏋️ Exercises</div>
+          <span class="ex-chip">Pike Push-Ups 4×8–12</span>
+          <span class="ex-chip">Deficit Push-Ups 4×10–15</span>
+          <span class="ex-chip">Decline Push-Ups 3×10–15</span>
+          <span class="ex-chip">Pseudo-Planche 3×8–12</span>
+        </div>
+        <div class="day-section">
+          <div class="day-section-label">💪 Core</div>
+          <span class="ex-chip">Hollow Body Hold 3×45–60s</span>
+          <span class="ex-chip">V-Ups 4×15</span>
+        </div>
+      </div>
+
+      <div class="day-row rest-day">
+        <div class="day-label">
+          <div class="day-name">TUE</div>
+          <div class="day-focus">Active Rest / Football / Light Legs</div>
+          <span class="day-badge badge-active">Recovery</span>
+        </div>
+        <div class="day-section">
+          <div class="day-section-label">💬 Focus</div>
+          <ul>
+            <li>No chest/shoulder work — let upper body recover</li>
+            <li>Light legs, mobility, or football (cardio)</li>
+            <li>Hit protein target — muscle grows during rest</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-label">
+          <div class="day-name">WED</div>
+          <div class="day-focus">Chest / Shoulders & Core Volume</div>
+          <span class="day-badge badge-heavy">Volume Day</span>
+        </div>
+        <div class="day-section">
+          <div class="day-section-label">🏋️ Exercises (Alternate Variations)</div>
+          <span class="ex-chip">Deficit Push-Ups 4×10–15</span>
+          <span class="ex-chip">Decline Push-Ups 3×12–15</span>
+          <span class="ex-chip">Bench Dips / Chest Dips 3×8–15</span>
+          <span class="ex-chip">Pseudo-Planche 3×8–12</span>
+        </div>
+        <div class="day-section">
+          <div class="day-section-label">💪 Core</div>
+          <span class="ex-chip">Lying Leg Raises 3×15</span>
+          <span class="ex-chip">Hollow Body Hold 3×45s</span>
+          <span class="ex-chip">V-Ups 3×15</span>
+        </div>
+      </div>
+
+      <div class="day-row rest-day">
+        <div class="day-label">
+          <div class="day-name">THU</div>
+          <div class="day-focus">Active Recovery</div>
+          <span class="day-badge badge-active">Recovery</span>
+        </div>
+        <div class="day-section">
+          <div class="day-section-label">💬 Focus</div>
+          <ul>
+            <li>Mobility, stretching, light walking</li>
+            <li>Thoracic extension + shoulder mobility drills</li>
+            <li>Sleep 7–9h — this is when you grow</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-label">
+          <div class="day-name">FRI</div>
+          <div class="day-focus">Chest / Shoulders & Heavy Core</div>
+          <span class="day-badge badge-heavy">Heavy Day</span>
+        </div>
+        <div class="day-section">
+          <div class="day-section-label">🏋️ Exercises</div>
+          <span class="ex-chip">Pike Push-Ups 4×8–12</span>
+          <span class="ex-chip">Deficit Push-Ups 4×10–15</span>
+          <span class="ex-chip">Decline Push-Ups 3×10–15</span>
+          <span class="ex-chip">Pseudo-Planche 3×8–12</span>
+        </div>
+        <div class="day-section">
+          <div class="day-section-label">💪 Core</div>
+          <span class="ex-chip">V-Ups 4×15</span>
+          <span class="ex-chip">Leg Raises 3×15</span>
+          <span class="ex-chip">Hollow Hold 3×60s</span>
+        </div>
+      </div>
+
+      <div class="day-row rest-day">
+        <div class="day-label">
+          <div class="day-name">SAT</div>
+          <div class="day-focus">Football / Sport / Rest</div>
+          <span class="day-badge badge-rest">Flex</span>
+        </div>
+        <div class="day-section">
+          <div class="day-section-label">💬 Focus</div>
+          <ul>
+            <li>Football, outdoor sport, or full rest</li>
+            <li>Keep nutrition on point — protein stays consistent</li>
+            <li>Use as makeup day if a session was missed</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day-row rest-day">
+        <div class="day-label">
+          <div class="day-name">SUN</div>
+          <div class="day-focus">Full Rest / Meal Prep</div>
+          <span class="day-badge badge-rest">Rest</span>
+        </div>
+        <div class="day-section">
+          <div class="day-section-label">🥘 Meal Prep</div>
+          <ul>
+            <li>Batch cook chicken, rice, fish for Mon–Wed</li>
+            <li>Prep Greek yogurt, hard-boiled eggs for snacks</li>
+            <li>Recovery is training — honour it</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="section-line">
+
+  <!-- ── EXERCISES WITH REFERENCES ── -->
+  <div class="section-block" id="exercises">
+    <p class="section-eyebrow">04 — Exercise Library</p>
+    <div class="section-title">Every Movement — With Form Cues</div>
+
+    <div class="callout amber" style="margin-bottom:24px;">
+      <div class="callout-icon">⏱️</div>
+      <div class="callout-body">
+        <div class="callout-title">Golden Rule — Tempo on Every Rep</div>
+        <div class="callout-text">2–4s down · pause at bottom · explode up (3-1-1 tempo). This maximises time-under-tension (~40–70s per set) — the #1 driver of hypertrophy without weights. If 15 reps feel easy, slow down before adding variation.</div>
+      </div>
+    </div>
+
+    <div class="exercises-grid">
+
+      <!-- Pike Push-Ups -->
+      <div class="ex-card">
+        <div class="yt-wrap">
+          <span class="yt-badge">🎥 Demo</span>
+          <iframe src="https://www.youtube.com/embed/x7_I5SUAd00?rel=0&modestbranding=1"
+            title="Pike Push-Ups Form" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="ex-body">
+          <div class="ex-day-tag">Mon / Wed / Fri · Shoulders & Upper Chest</div>
+          <div class="ex-name">Pike Push-Ups</div>
+          <div class="ex-sets">💪 4 × 8–12 · Rest 60–90s</div>
+          <div class="ex-cues">Feet elevated, hips high in a V-position. <strong>Descend with head just touching floor.</strong> Core tight, back straight. Increase difficulty by elevating feet higher or slowing the eccentric to 4s. Primarily hits anterior deltoids and upper chest.</div>
+        </div>
+      </div>
+
+      <!-- Deficit Push-Ups -->
+      <div class="ex-card">
+        <div class="yt-wrap">
+          <span class="yt-badge">🎥 Demo</span>
+          <iframe src="https://www.youtube.com/embed/wqrxO6RUXuI?rel=0&modestbranding=1"
+            title="Deficit Push-Ups Form" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="ex-body">
+          <div class="ex-day-tag">Mon / Wed / Fri · Chest (Deep Stretch)</div>
+          <div class="ex-name">Deficit Push-Ups</div>
+          <div class="ex-sets">💪 4 × 10–15 · Rest 60–90s</div>
+          <div class="ex-cues">Hands on two sturdy books or chairs — <strong>dip lower than floor level</strong> for a deep chest stretch. This mechanical drop overloads chest fibers through a full range. Too easy? Elevate feet or add a 2s pause at the bottom.</div>
+        </div>
+      </div>
+
+      <!-- Decline Push-Ups -->
+      <div class="ex-card">
+        <div class="yt-wrap">
+          <span class="yt-badge">🎥 Demo</span>
+          <iframe src="https://www.youtube.com/embed/SKPab2UB7-I?rel=0&modestbranding=1"
+            title="Decline Push-Ups Form" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="ex-body">
+          <div class="ex-day-tag">Mon / Wed / Fri · Upper Chest & Front Delts</div>
+          <div class="ex-name">Decline Push-Ups</div>
+          <div class="ex-sets">💪 3 × 10–15 · Rest 60–90s</div>
+          <div class="ex-cues">Feet elevated on a chair or sofa, hands on floor. Body angles downward. <strong>Chest should nearly touch the floor</strong> at the bottom — full range of motion is non-negotiable. Increase chair height each week for progressive overload.</div>
+        </div>
+      </div>
+
+      <!-- Pseudo-Planche -->
+      <div class="ex-card">
+        <div class="yt-wrap">
+          <span class="yt-badge">🎥 Demo</span>
+          <iframe src="https://www.youtube.com/embed/QFLDGa-lK-Q?rel=0&modestbranding=1"
+            title="Pseudo Planche Push-Up" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="ex-body">
+          <div class="ex-day-tag">Mon / Wed / Fri · Chest & Anterior Deltoid</div>
+          <div class="ex-name">Pseudo-Planche Push-Ups</div>
+          <div class="ex-sets">💪 3 × 8–12 (to failure on last set)</div>
+          <div class="ex-cues"><strong>Hands by hips instead of shoulders</strong>, lean body forward before lowering. This shifts load dramatically onto chest and front delts — much harder than it looks. Go to failure on the last set only. Rest 90s minimum.</div>
+        </div>
+      </div>
+
+      <!-- Bench / Chest Dips -->
+      <div class="ex-card">
+        <div class="yt-wrap">
+          <span class="yt-badge">🎥 Demo</span>
+          <iframe src="https://www.youtube.com/embed/c2eiGFuFkDg?rel=0&modestbranding=1"
+            title="Chest Dips / Bench Dips" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="ex-body">
+          <div class="ex-day-tag">Wed · Chest & Front Shoulders</div>
+          <div class="ex-name">Chest Dips / Bench Dips</div>
+          <div class="ex-sets">💪 3 × 8–15 · Rest 60–90s</div>
+          <div class="ex-cues">Use two sturdy chairs for parallel dips, or one chair for bench dips. <strong>Lean torso forward</strong> to load the chest more than the triceps. Descend until shoulders are below elbows. Control the negative — 3s down.</div>
+        </div>
+      </div>
+
+      <!-- Core — Hollow Body + V-Ups + Leg Raises -->
+      <div class="ex-card">
+        <div class="yt-wrap">
+          <span class="yt-badge">🎥 Demo</span>
+          <iframe src="https://www.youtube.com/embed/LlDNef_Ztsc?rel=0&modestbranding=1"
+            title="Hollow Body Hold and V-Ups" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="ex-body">
+          <div class="ex-day-tag">Mon / Wed / Fri · Core — Abs & Obliques</div>
+          <div class="ex-name">Hollow Body Hold + V-Ups + Leg Raises</div>
+          <div class="ex-sets">💪 Hollow: 3×45–60s · V-Ups: 4×15 · Leg Raises: 3×15</div>
+          <div class="ex-cues"><strong>Hollow Hold:</strong> Press lower back into floor, lift shoulders & legs ~6 inches. Breathe controlled — don't let lower back arch.<br><br><strong>V-Ups:</strong> Arms overhead → simultaneously lift legs and torso, touch toes. Control the descent slowly.<br><br><strong>Leg Raises:</strong> Slow and controlled, progressive overload over weeks.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="section-line">
+
+  <!-- ── WARM-UP ── -->
+  <div class="section-block">
+    <p class="section-eyebrow">05 — Before Every Session</p>
+    <div class="section-title">Warm-Up Protocol (10 min)</div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;">
+      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:20px;">
+        <div style="font-size:1.4rem;margin-bottom:10px;">🔄</div>
+        <div style="font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:5px;">Joint Circles</div>
+        <div style="font-size:0.78rem;color:var(--text-mid);">1–2 min gentle shoulder and wrist circles. Prime connective tissue before any pressing.</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:20px;">
+        <div style="font-size:1.4rem;margin-bottom:10px;">🦴</div>
+        <div style="font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:5px;">Scapular Push-Ups</div>
+        <div style="font-size:0.78rem;color:var(--text-mid);">1×15 — lock out arms, squeeze and protract shoulder blades. Activates stabilisers.</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:20px;">
+        <div style="font-size:1.4rem;margin-bottom:10px;">🐱</div>
+        <div style="font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:5px;">Cat-Camel / Thoracic Extension</div>
+        <div style="font-size:0.78rem;color:var(--text-mid);">1–2 min. Mobilise the spine and thorax — critical for overhead pressing patterns.</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:20px;">
+        <div style="font-size:1.4rem;margin-bottom:10px;">💨</div>
+        <div style="font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:5px;">Wall Slides / Arm Crosses</div>
+        <div style="font-size:0.78rem;color:var(--text-mid);">1×10 each. Open the chest, warm the front deltoids, groove shoulder external rotation.</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:20px;">
+        <div style="font-size:1.4rem;margin-bottom:10px;">🏃</div>
+        <div style="font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:5px;">Dynamic Chest Stretch</div>
+        <div style="font-size:0.78rem;color:var(--text-mid);">Arm swings and trunk twists. Finish with 5 slow push-ups to groove form before the first set.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-line">
+
+  <!-- ── PROGRESSION TIMELINE ── -->
+  <div class="section-block" id="progression">
+    <p class="section-eyebrow">06 — 8–12 Week Roadmap</p>
+    <div class="section-title">Your Progression Timeline</div>
+
+    <div class="timeline" style="margin-bottom:40px;">
+
+      <div class="phase-card">
+        <div class="phase-dot">1</div>
+        <div class="phase-weeks">Weeks 1 – 4</div>
+        <div class="phase-name">Base</div>
+        <div class="phase-desc">Build strength foundation and lock in perfect form. Use easier variations if needed — bench for deficit push-ups is fine.</div>
+        <div class="phase-targets">
+          <div class="phase-target">~10–12 sets chest/week</div>
+          <div class="phase-target">Focus on full range of motion</div>
+          <div class="phase-target">Nail the 3s eccentric tempo</div>
+          <div class="phase-target">Track every session — log reps</div>
+        </div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-dot">2</div>
+        <div class="phase-weeks">Weeks 5 – 8</div>
+        <div class="phase-name">Build</div>
+        <div class="phase-desc">Increase difficulty. Add books for deeper deficits, elevate feet higher, slow rep speed. Aim 8–10 reps on harder moves.</div>
+        <div class="phase-targets">
+          <div class="phase-target">~12–16 sets chest/week</div>
+          <div class="phase-target">Drop 200 kcal if abs not showing</div>
+          <div class="phase-target">Add backpack weight if too easy</div>
+          <div class="phase-target">Weekly photos, same lighting</div>
+        </div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-dot">3</div>
+        <div class="phase-weeks">Weeks 9 – 12</div>
+        <div class="phase-name">Peak</div>
+        <div class="phase-desc">Maximise difficulty. Sparingly add one-arm or explosive variations. Maintain peak volume and stay strict on diet.</div>
+        <div class="phase-targets">
+          <div class="phase-target">15–20 sets chest/week</div>
+          <div class="phase-target">Noticeably thicker chest & shoulders</div>
+          <div class="phase-target">Abs visible if diet on point</div>
+          <div class="phase-target">Consider deload in week 10 if needed</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Example workout log table -->
+    <p style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-dim);margin-bottom:12px;font-weight:600;">Example Workout Log — Week 1, Day 1</p>
+    <div style="background:var(--card);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;">
+      <table class="workout-table">
+        <thead>
+          <tr>
+            <th>Exercise</th>
+            <th>Sets × Reps</th>
+            <th>Notes / RPE</th>
+            <th>Effort</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Pike Push-Ups</strong></td>
+            <td class="amber">4 × 12, 11, 10, 10</td>
+            <td>3s eccentric, felt strong on set 1</td>
+            <td><div class="rpe-bar"><div class="rpe-dot filled"></div><div class="rpe-dot filled"></div><div class="rpe-dot filled"></div><div class="rpe-dot filled"></div><div class="rpe-dot empty"></div></div></td>
+          </tr>
+          <tr>
+            <td><strong>Deficit Push-Ups</strong></td>
+            <td class="amber">4 × 15, 14, 13, 12</td>
+            <td>Books under hands — good depth</td>
+            <td><div class="rpe-bar"><div class="rpe-dot filled"></div><div class="rpe-dot filled"></div><div class="rpe-dot filled"></div><div class="rpe-dot filled"></div><div class="rpe-dot filled"></div></div></td>
+          </tr>
+          <tr>
+            <td><strong>Decline Push-Ups</strong></td>
+            <td class="amber">3 × 15, 15, 14</td>
+            <td>Chair at ~45cm height</td>
+            <td><div class="rpe-bar"><div class="rpe-dot filled"></div><div class="rpe-dot filled"></div><div class="rpe-dot filled"></div><div class="rpe-dot filled"></div><div class="rpe-dot empty"></div></div></td>
+          </tr>
+          <tr>
+            <td><strong>Hollow Body Hold</strong></td>
+            <td class="amber">3 × 60s, 60s, 60s</td>
+            <td>Lower back pressed flat, breathing OK</td>
+            <td><div class="rpe-bar"><div class="rpe-dot filled"></div><div class="rpe-dot filled"></div><div class="rpe-dot filled"></div><div class="rpe-dot empty"></div><div class="rpe-dot empty"></div></div></td>
+          </tr>
+          <tr>
+            <td><strong>V-Ups</strong></td>
+            <td class="amber">4 × 15</td>
+            <td>Slow descent each rep</td>
+            <td><div class="rpe-bar"><div class="rpe-dot filled"></div><div class="rpe-dot filled"></div><div class="rpe-dot filled"></div><div class="rpe-dot filled"></div><div class="rpe-dot empty"></div></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="section-line">
+
+  <!-- ── SOURCES ── -->
+  <div class="section-block">
+    <p class="section-eyebrow">07 — Science & Sources</p>
+    <div class="section-title">Evidence-Based References</div>
+
+    <div class="sources-grid">
+      <a class="source-link" href="https://www.boxrox.com/10-best-bodyweight-chest-exercises-for-growth/" target="_blank" rel="noopener">
+        <span class="source-num">01</span>
+        <div>
+          <div class="source-title">10 Best Bodyweight Chest Exercises for Explosive Growth</div>
+          <div class="source-url">boxrox.com</div>
+        </div>
+      </a>
+      <a class="source-link" href="https://www.health.harvard.edu/exercise-and-fitness/calisthenics-an-effective-low-frills-way-to-stay-fit" target="_blank" rel="noopener">
+        <span class="source-num">02</span>
+        <div>
+          <div class="source-title">Calisthenics: An Effective, Low-Frills Way to Stay Fit</div>
+          <div class="source-url">Harvard Health</div>
+        </div>
+      </a>
+      <a class="source-link" href="https://learn.athleanx.com/articles/how-much-protein-to-build-muscle" target="_blank" rel="noopener">
+        <span class="source-num">03</span>
+        <div>
+          <div class="source-title">How Much Protein to Build Muscle?</div>
+          <div class="source-url">ATHLEAN-X</div>
+        </div>
+      </a>
+      <a class="source-link" href="https://surfsportsmyo.com.au/blog/body-recomposition-lose-fat-and-build-muscle/" target="_blank" rel="noopener">
+        <span class="source-num">04</span>
+        <div>
+          <div class="source-title">Body Recomposition: Lose Fat and Build Muscle</div>
+          <div class="source-url">surfsportsmyo.com.au</div>
+        </div>
+      </a>
+      <a class="source-link" href="https://gravity.fitness/blogs/training/the-science-of-time-under-tension-maximising-muscle-growth-with-calisthenics" target="_blank" rel="noopener">
+        <span class="source-num">05</span>
+        <div>
+          <div class="source-title">The Science of Time Under Tension — Calisthenics Hypertrophy</div>
+          <div class="source-url">Gravity Fitness</div>
+        </div>
+      </a>
+      <a class="source-link" href="https://bonytobeastly.com/bodyweight-workout-for-muscle-mass/" target="_blank" rel="noopener">
+        <span class="source-num">06</span>
+        <div>
+          <div class="source-title">Beginner Bodyweight Workout Plan for Building Muscle</div>
+          <div class="source-url">Bony to Beastly</div>
+        </div>
+      </a>
+      <a class="source-link" href="https://www.sciencedirect.com/science/article/pii/S1728869X17301028" target="_blank" rel="noopener">
+        <span class="source-num">07</span>
+        <div>
+          <div class="source-title">Low-Load Push-Up ≈ Bench Press for Muscle Hypertrophy (Kikuchi 2017)</div>
+          <div class="source-url">ScienceDirect · Journal of Exercise Science</div>
+        </div>
+      </a>
+      <a class="source-link" href="https://www.reddit.com/r/bodyweightfitness/comments/fxilue/highlights_from_convict_conditioning_and_convict/" target="_blank" rel="noopener">
+        <span class="source-num">08</span>
+        <div>
+          <div class="source-title">Highlights from Convict Conditioning 1 & 2 — Key Principles</div>
+          <div class="source-url">r/bodyweightfitness</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="footer">
+    <h2>SHOW UP.<br><span>GET BUILT.</span></h2>
+    <p>Every set, every meal, every night's sleep — it all compounds. The science is on your side. Now the only variable is consistency.</p>
+    <div class="footer-stats">
+      <div class="f-stat">
+        <span class="f-num">3×</span>
+        <span class="f-lbl">Training Days / Week</span>
+      </div>
+      <div class="f-div"></div>
+      <div class="f-stat">
+        <span class="f-num">12</span>
+        <span class="f-lbl">Weeks to Peak Form</span>
+      </div>
+      <div class="f-div"></div>
+      <div class="f-stat">
+        <span class="f-num">0</span>
+        <span class="f-lbl">Equipment Needed</span>
+      </div>
+      <div class="f-div"></div>
+      <div class="f-stat">
+        <span class="f-num">∞</span>
+        <span class="f-lbl">Excuses Accepted</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
